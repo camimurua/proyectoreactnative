@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
         color: '#212121'
     },
     list: {
-        /* gap: 15, */
+        gap: 15,
         paddingBottom: 20
     },
     icon: {

@@ -46,13 +46,13 @@ export default function App() {
     setIsVisible(false);
   }
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item}) => (
     <TouchableOpacity onPress={() => onHandlerModal(item)} style={styles.itemContainer}>
       <Text style={styles.itemList}>{item.value}</Text>
       <Text style={styles.icon}>X</Text>
     </TouchableOpacity>
 
-  }
+  )
   
   return (
     <SafeAreaView style={styles.safeArea}>
