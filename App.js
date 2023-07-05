@@ -51,7 +51,7 @@ export default function App() {
   };
 
   const onHandlerDelete = (id) => {
-    setTaskList((prevTaskList) => prevTaskList.filter((task) => task.id != id));
+    setTaskList((prevTaskList) => prevTaskList.filter((task) => task.id !== id));
     setIsVisible(false);
   };
 
