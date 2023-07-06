@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Text, View, Button, SafeAreaView, FlatList, Modal, TouchableOpacity } from "react-native";
 
-import { InputTask } from "./components";
+import { InputTask, TaskItem } from "./components";
 import { styles } from "./styles";
 
 export default function App() {
@@ -47,12 +47,7 @@ export default function App() {
     setIsVisible(false);
   };
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => onHandlerModal(item)} style={styles.itemContainer}>
-      <Text style={styles.itemList}>{item.value}</Text>
-      <Text style={styles.icon}>X</Text>
-    </TouchableOpacity>
-  );
+  const renderItem = ({ item }) => <TaskItem onPressItem={onHandlerModal} item={item} />;
 
   return (
     <SafeAreaView style={styles.safeArea}>
