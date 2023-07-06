@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Text, View, Button, SafeAreaView, FlatList, Modal } from "react-native";
+import { View, SafeAreaView } from "react-native";
 
-import { InputTask, TaskItem, TaskList } from "./components";
+import { InputTask, ModalTask, TaskItem, TaskList } from "./components";
 import { styles } from "./styles";
 
 export default function App() {
@@ -62,23 +62,12 @@ export default function App() {
         />
         <TaskList list={taskList} renderItem={renderItem} />
       </View>
-      <Modal visible={isVisible} animationType="slide">
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Detalle</Text>
-          <View style={styles.modalOption}>
-            <Text style={styles.modalMsg}>¿Estas seguro que quieres eliminar esta tarea?</Text>
-            <Text style={styles.selectedTask}>{selectedTask?.value}</Text>
-          </View>
-          <View style={styles.modalButtonContainer}>
-            <Button title="Cancelar" color="#424D9E" onPress={() => setIsVisible(false)} />
-            <Button
-              title="Eliminar"
-              color="red"
-              onPress={() => onHandlerDelete(selectedTask?.id)}
-            />
-          </View>
-        </View>
-      </Modal>
+      <ModalTask
+        isVisible={isVisible}
+        selectedTask={selectedTask}
+        setIsVisible={setIsVisible}
+        onDeleteTask={onHandlerDelete}
+      />
     </SafeAreaView>
   );
 }
