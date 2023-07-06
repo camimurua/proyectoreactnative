@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Text, View, Button, SafeAreaView, FlatList, Modal, TouchableOpacity } from "react-native";
+import { Text, View, Button, SafeAreaView, FlatList, Modal } from "react-native";
 
-import { InputTask, TaskItem } from "./components";
+import { InputTask, TaskItem, TaskList } from "./components";
 import { styles } from "./styles";
 
 export default function App() {
@@ -60,14 +60,7 @@ export default function App() {
           task={task}
           onHandlerCreateTask={onHandlerCreateTask}
         />
-        <FlatList
-          data={taskList}
-          renderItem={renderItem}
-          style={styles.listContainer}
-          contentContainerStyle={styles.list}
-          alwaysBounceVertical={false}
-          keyExtractor={(item) => item.id}
-        />
+        <TaskList list={taskList} renderItem={renderItem} />
       </View>
       <Modal visible={isVisible} animationType="slide">
         <View style={styles.modalContainer}>
