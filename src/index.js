@@ -1,15 +1,7 @@
 import { useState } from "react";
-import {
-  Text,
-  View,
-  TextInput,
-  Button,
-  SafeAreaView,
-  FlatList,
-  Modal,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Button, SafeAreaView, FlatList, Modal, TouchableOpacity } from "react-native";
 
+import { InputTask } from "./components";
 import { styles } from "./styles";
 
 export default function App() {
@@ -65,24 +57,14 @@ export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={[styles.input, { borderColor }]}
-            placeholder="Agregar nueva tarea"
-            autoCapitalize="none"
-            autoCorrect={false}
-            onFocus={onHandlerFocus}
-            onBlur={onHandlerBlur}
-            onChangeText={onHandlerChangeText}
-            value={task}
-          />
-          <Button
-            disabled={task.length === 0}
-            title="Crear"
-            color="#424D9E"
-            onPress={onHandlerCreateTask}
-          />
-        </View>
+        <InputTask
+          borderColor={borderColor}
+          onHandlerFocus={onHandlerFocus}
+          onHandlerBlur={onHandlerBlur}
+          onHandlerChangeText={onHandlerChangeText}
+          task={task}
+          onHandlerCreateTask={onHandlerCreateTask}
+        />
         <FlatList
           data={taskList}
           renderItem={renderItem}
